@@ -1,8 +1,10 @@
 const mongoose = require('mongoose');
 
-//TODO change database according to assignments
+
+// TODO change database according to assignments
 // scaffoldDb --> must be change to our database
-const CONNECTION_STRING = 'mongodb://localhost:27017/scaffoldDb'
+const CONNECTION_STRING = 'mongodb://127.0.0.1:27017/scaffoldDb';
+
 
 module.exports = async (app) => {
     try {
