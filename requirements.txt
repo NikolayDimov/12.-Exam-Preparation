@@ -4,7 +4,7 @@
 [ ] User registration 
 [ ]  - cookies and session
 [ ]  - hashing of password
-[ ]  - JSON Web Token
+[x]  - JSON Web Token
 [ ] Error handling
 
 Full CRUD (application specific)
@@ -13,3 +13,5 @@ Full CRUD (application specific)
 - create
 - edit
 - delete
+
+Demo global error handling
