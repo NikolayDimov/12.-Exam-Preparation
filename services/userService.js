@@ -21,13 +21,26 @@ async function register(username, password) {
 
     // TODO see assignments if registration create user session
     const token = createSession(user);
-
     return token;
 }
 
-async function login() {
 
+async function login(username, password) {
+    const user = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
+    if (!user) {
+        throw new Error('Incorrect username or password');
+    }
+
+    const hasMatch = await bcrypt.compare(password, user.hashedPassword);
+
+    if (hasMatch == false) {
+        throw new Error('Incorrect username or password');
+    }
+
+    const token = createSession(user);
+    return token;
 }
+
 
 function createSession(user) {
     const payload = {
@@ -36,7 +49,6 @@ function createSession(user) {
     };
 
     const token = jwt.sign(payload, JWT_SECRET);
-
     return token;
 }
 

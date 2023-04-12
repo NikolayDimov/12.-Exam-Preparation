@@ -1,4 +1,4 @@
-const { register } = require('../services/userService');
+const { register, login } = require('../services/userService');
 const { parseError } = require('../util/parser');
 
 const authController = require('express').Router();
@@ -24,9 +24,10 @@ authController.post('/register', async (req, res) => {
 
         const token = await register(req.body.username, req.body.password);
 
+        // TODO check assignment to see if register creates session
         res.cookie('token', token);
+        res.redirect('/');     // TODO replace with redirect by assignment
 
-        res.redirect('/auth/register');
     } catch (error) {
         const errors = parseError(error);
 
@@ -49,6 +50,10 @@ authController.get('/login', (req, res) => {
 
 authController.post('/login', async (req, res) => {
     try {
+        const token = await login(req.body.username, req.body.password);
+
+        res.cookie('token', token);
+        res.redirect('/');  // TODO replace with redirect by assignment
 
     } catch (error) {
         const errors = parseError(error);
