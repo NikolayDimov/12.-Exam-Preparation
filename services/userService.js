@@ -8,7 +8,7 @@ const JWT_SECRET = 'jwt-secret123';
 
 async function register(username, password) {
     const existing = await User.findOne({ username }).collation({ locale: 'en', strength: 2 });
-    if(existing) {
+    if (existing) {
         throw new Error('User is taken already')
     }
 
@@ -52,8 +52,8 @@ function createSession(user) {
     return token;
 }
 
-function verifyToken() {
-
+function verifyToken(token) {
+    return jwt.verify(token, JWT_SECRET);
 }
 
 

@@ -43,6 +43,7 @@ authController.post('/register', async (req, res) => {
 
 
 authController.get('/login', (req, res) => {
+    // TODO replace with actual view by assignment
     res.render('login', {
         title: 'Login Page'
     });
@@ -64,6 +65,12 @@ authController.post('/login', async (req, res) => {
         });
     }
 });
+
+
+authController.get('/logout', (req,res) => {
+    res.clearCookie('token');
+    res.redirect('/');
+})
 
 
 module.exports = authController;
