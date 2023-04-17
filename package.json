@@ -17,6 +17,7 @@
     "git-init": "^1.0.0",
     "jsonwebtoken": "^9.0.0",
     "mongodb": "^5.2.0",
-    "mongoose": "^7.0.3"
+    "mongoose": "^7.0.3",
+    "validator": "^13.9.0"
   }
 }
